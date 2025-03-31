@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IglesiaCristianaLaVictoria</title>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        function App() {
+            const [images, setImages] = React.useState([
+                { 
+                    id: 1, 
+                    src: 'https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600', 
+                    title: 'Servicio Dominical', 
+                    likes: 0 
+                },
+                { 
+                    id: 2, 
+                    src: 'https://images.unsplash.com/photo-1560439514-4e9645039924?w=600', 
+                    title: 'Grupo de Jóvenes', 
+                    likes: 0 
+                }
+            ]);
+            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+            const [showModal, setShowModal] = React.useState(false);
+            const [selectedImage, setSelectedImage] = React.useState(null);
+            const [activeSection, setActiveSection] = React.useState('inicio');
+
+            const addImage = () => {
+                const newImage = {
+                    id: images.length + 1,
+                    src: 'https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486625066_1096377335862893_6208095750383997392_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEWVTgeE_uZpWPNr3jzLU7TKApsTAPO5VYoCmxMA87lVpBd-L4T0Y3fk8mvSjy7LfgQPMqtTnKIBmECKNH8ILvg&_nc_ohc=5S5q0D7Tqm8Q7kNvgHzXGYa&_nc_oc=Adm91zAuzO09e34mnp_GvPXQc3_lVO5b1Ct_gRMuSSh_6O2CUOTBf95jHRJec2j949U&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=nhf5-0Dsb3SJPNT84fTmBg&oh=00_AYFFQn0JD-IGRbUtJrcEDbsstuR9-2VNvCSd9hQYKhwg2A&oe=67F081F7',
+                    title: `Imagen ${images.length + 1}`,
+                    likes: 0
+                };
+                setImages([...images, newImage]);
+            };
+
+            const handleLike = (id) => {
+                setImages(images.map(img => 
+                    img.id === id ? {...img, likes: img.likes + 1} : img
+                ));
+            };
+
+            const openModal = (image) => {
+                setSelectedImage(image);
+                setShowModal(true);
+            };
+
+            return (
+                <div className="min-h-screen bg-gray-100">
+                    {/* Navigation Bar */}
+                    <nav className="bg-blue-800 text-white">
+                        <div className="max-w-7xl mx-auto px-4">
+                            <div className="flex justify-between items-center h-16">
+                                <div className="flex items-center space-x-3">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-1/326346983_875115313706020_3718573300098376225_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=101&ccb=1-7&_nc_sid=2d3e12&_nc_eui2=AeHFY9S0KH9Wy8E2FEYhc7p4_Bs4C5Yj66D8GzgLliProOjByCy4YTXJx0gQJTeQFYE7N8opY6368cO6JAR97mbz&_nc_ohc=TxBOQLcUbK8Q7kNvgGbGEJN&_nc_oc=Adk_RUkd4a8XQBD08983WhpVloNIImjdVMIkd4Vr1QL7JrlylwwRU05Idh9G7zSFU7c&_nc_zt=24&_nc_ht=scontent.fasu6-1.fna&_nc_gid=myhfC1oE9qUqF2FCvtvCZA&oh=00_AYEKv9NBwsB38m_KgKZEiEJiux580glHJtXe6O0CuIn7vQ&oe=67F09E5A"
+                                        alt="Logo Iglesia"
+                                        className="h-12 w-12 rounded-full"
+                                    />
+                                    <h1 className="text-xl font-bold">Iglesia Cristiana La Victoria</h1>
+                                </div>
+                                
+                                {/* Desktop Menu */}
+                                <div className="hidden md:flex space-x-4">
+                                    <button onClick={() => setActiveSection('inicio')} 
+                                            className={`px-3 py-2 rounded-md ${activeSection === 'inicio' ? 'bg-blue-900' : 'hover:bg-blue-700'}`}>
+                                        Inicio
+                                    </button>
+                                    <button onClick={() => setActiveSection('servicios')} 
+                                            className={`px-3 py-2 rounded-md ${activeSection === 'servicios' ? 'bg-blue-900' : 'hover:bg-blue-700'}`}>
+                                        Servicios
+                                    </button>
+                                    <button onClick={() => setActiveSection('eventos')} 
+                                            className={`px-3 py-2 rounded-md ${activeSection === 'eventos' ? 'bg-blue-900' : 'hover:bg-blue-700'}`}>
+                                        Eventos
+                                    </button>
+                                    <button onClick={() => setActiveSection('ministerial')} 
+                                            className={`px-3 py-2 rounded-md ${activeSection === 'ministerial' ? 'bg-blue-900' : 'hover:bg-blue-700'}`}>
+                                        Cuerpo Ministerial
+                                    </button>
+                                </div>
+
+                                {/* Mobile Menu Button */}
+                                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            {/* Mobile Menu */}
+                            {isMenuOpen && (
+                                <div className="md:hidden pb-3">
+                                    <button onClick={() => {setActiveSection('inicio'); setIsMenuOpen(false)}} 
+                                            className="block px-3 py-2 rounded-md text-white hover:bg-blue-700 w-full text-left">
+                                        Inicio
+                                    </button>
+                                    <button onClick={() => {setActiveSection('servicios'); setIsMenuOpen(false)}} 
+                                            className="block px-3 py-2 rounded-md text-white hover:bg-blue-700 w-full text-left">
+                                        Servicios
+                                    </button>
+                                    <button onClick={() => {setActiveSection('eventos'); setIsMenuOpen(false)}} 
+                                            className="block px-3 py-2 rounded-md text-white hover:bg-blue-700 w-full text-left">
+                                        Eventos
+                                    </button>
+                                    <button onClick={() => {setActiveSection('galeria'); setIsMenuOpen(false)}} 
+                                            className="block px-3 py-2 rounded-md text-white hover:bg-blue-700 w-full text-left">
+                                        Galería
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </nav>
+
+                    {/* Content Sections */}
+                    <main className="max-w-7xl mx-auto px-4 py-6">
+                        {activeSection === 'inicio' && (
+                            <div className="text-center">
+                                <h2 className="text-3xl font-bold mb-4">Bienvenidos a nuestra Iglesia</h2>
+                                <img 
+                                    src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486625066_1096377335862893_6208095750383997392_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEWVTgeE_uZpWPNr3jzLU7TKApsTAPO5VYoCmxMA87lVpBd-L4T0Y3fk8mvSjy7LfgQPMqtTnKIBmECKNH8ILvg&_nc_ohc=5S5q0D7Tqm8Q7kNvgHzXGYa&_nc_oc=Adm91zAuzO09e34mnp_GvPXQc3_lVO5b1Ct_gRMuSSh_6O2CUOTBf95jHRJec2j949U&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=nhf5-0Dsb3SJPNT84fTmBg&oh=00_AYFFQn0JD-IGRbUtJrcEDbsstuR9-2VNvCSd9hQYKhwg2A&oe=67F081F7" 
+                                    alt="Iglesia Cristiana La Victoria" 
+                                    className="w-full max-w-4xl mx-auto rounded-lg shadow-lg mb-6"
+                                />
+                                <p className="text-lg mb-6">Un lugar de adoración, comunión y crecimiento espiritual</p>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <h3 className="text-xl font-bold mb-3">Horarios de Servicios</h3>
+                                    <p>Domingos: 10:00 AM - Servicio Principal</p>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'galeria' && (
+                            <div>
+                                <div className="flex justify-between items-center mb-6">
+                                    <h2 className="text-2xl font-bold">Galería de Eventos</h2>
+                                    <button onClick={addImage} className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition-colors">
+                                        Agregar Imagen
+                                    </button>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    {/* Existing gallery code */}
+                                    {images.map(image => (
+                                        <div key={image.id} className="bg-white p-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
+                                            <img 
+                                                src={image.src} 
+                                                alt={image.title} 
+                                                className="w-full h-48 object-cover rounded cursor-pointer" 
+                                                onClick={() => openModal(image)}
+                                            />
+                                            <div className="mt-2 flex justify-between items-center">
+                                                <h2 className="text-center font-semibold">{image.title}</h2>
+                                                <button 
+                                                    onClick={() => handleLike(image.id)}
+                                                    className="text-red-500 hover:text-red-600"
+                                                >
+                                                    ❤️ {image.likes}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'servicios' && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/487322049_1096373889196571_4718536620377090472_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGqNsQeWyYDYFAMd2II8kajJgShX4M_IOEmBKFfgz8g4RThttYOCQJz0osluS4jLFHrhDGxfpz8GdcJZ4s17S4s&_nc_ohc=zuL9t4NcNJoQ7kNvgHmu07F&_nc_oc=AdkXHcfB5t1H3CB_3W3IgKB0AnznFlNszbu2gL1Pne2Y5v2P9qKKYmkelniyBfE8whk&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=wuKBZLVkh1Ulj_TarJ6Z7A&oh=00_AYEw2JDkDHo7qMR9mMHYYEMDhiKPv9uaT8eZoGhfbhx5NA&oe=67F097FB" 
+                                        alt="Culto Dominical" 
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-3">Culto Dominical</h3>
+                                    <p>Pra. Presidente Mirtha Talavera/Pr. Ever Presentado</p>
+                                    <p>Domingos 10:00 AM</p>
+                                </div>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <img 
+                                        src="https://www.facebook.com/reel/624594300363155/?s=single_unit&__cft__[0]=AZUIbz4Vy4HFAocCPiNfh7aIuvT641dOBCnZNV50eLojN6BWascY-SKilISzzYz76Az0w1r__uyecw_DmQG1lmvj8yWEXh8vnSx4JXpqaw4RYGLEs7qOU3ddy13YMEHjYWNNGifw2TeoTx0PqqkIfprqvGcf_F97NMbRZs8YUWMO73Dxl5gUg5bceg9C8qHBB_W8CoBHA_gLnC0Qf_u-sNGm&__tn__=H-R" 
+                                        alt="Culto Dominical" 
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-3">Grupos de Oración</h3>
+                                    <p>Pr. Ever Presentado</p>
+                                    <p>Reuniones semanales de oración</p>
+                                    <p>Jueves 7:30 PM</p>
+                                </div>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486329290_1092110999622860_6359069276812634455_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHiPSJNIjP9LlGwLsUkdhmI3QHBhpj9OlndAcGGmP06WXNooTOXm6ss8C-rN_Y-O53zMgnvsMGE7MlZ7kFieOsj&_nc_ohc=vv-7NSfVWPcQ7kNvgH2G2QG&_nc_oc=AdkKnSHKmphLJc7jfXCMs2-LIEOqz5s9b28IlPO0UtA9IEeszUgnUuJ45u3muGtlS_E&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=aRGUNWO59VSU5ew70ixR0g&oh=00_AYHEOkqnungUKa_P0mFv5RZ-6gU_FBogcglnDtflvA7SBQ&oe=67F0A79C" 
+                                        alt="Culto Dominical" 
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-3">Doctrina Fundamental y Liderazgo</h3>
+                                    <p>Pra. Mirtha Talavera</p>
+                                    <p>Martes 7:00 PM</p>
+                                </div>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800" 
+                                        alt="Culto Dominical" 
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-3">Culto Juvenil</h3>
+                                    <p>Pr. Marcelo Gonzales</p>
+                                    <p>Reuniones semanales todos los Viernes</p>
+                                    <p>Viernes 7:30 PM</p>
+                                </div>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486617262_1092862926214334_3031420025094590785_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHZJV35rizwcnPE2cr9nolW-_1Rk7dE6aj7_VGTt0TpqDxOGyeBw6NRBgsD8vYedFp2ZsLRzQg83r7hPZjvKgCe&_nc_ohc=VTi2f63owCsQ7kNvgFRxIrC&_nc_oc=Adk5iONxHMtOgU5vaE9--CRWOj6sODNKsw_iEBZS8orrdL3Cd3wmjMpPX6s3O3KttVk&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=cgH_8OBTgWyILTkHGr6xqQ&oh=00_AYHhV1NNUe9Utl3l5vdoxNfDF4pSRMrEf0-f_uCPt7LRdg&oe=67F099E1" 
+                                        alt="Culto Dominical" 
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    <h3 className="text-xl font-bold mb-3">Estudio de Liberacion y Guerra Espiritual</h3>
+                                    <p>Cynthia Talavera</p>
+                                    <p>Reuniones semanales todos los Miercoles</p>
+                                    <p>Miercoles 9:00 PM</p>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeSection === 'eventos' && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <h3 className="text-xl font-bold mb-3">Próximos Eventos</h3>
+                                    <ul className="space-y-2">
+                                        <li>Retiro de Jóvenes - Próximo mes</li>
+                                        <li>Conferencia de Familia - Agosto 2024</li>
+                                        <li>Campaña Evangelística/Arde La Victoria - Abril 2025</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                    </main>
+
+                    {/* Replace gallery section with ministerial section */}
+                    {activeSection === 'ministerial' && (
+                        <div className="max-w-7xl mx-auto px-4">
+                            <h2 className="text-3xl font-bold text-center mb-8">Cuerpo Ministerial</h2>
+                            
+                            {/* Pastores Principales */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                                    <img 
+                                        src="https://scontent.fasu6-2.fna.fbcdn.net/v/t39.30808-6/429676816_1583968875475853_1566826567920564779_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHOlcT9-HPsk6Nn6LtMXqpkEbg_vD9PwZkRuD-8P0_BmToP1ygHwLYbH-scwpodpDparzHpxFhfj7NCKO7Y5c2r&_nc_ohc=Qbrx8CCtmaAQ7kNvgFJjQmM&_nc_oc=AdkbRn8P0W80QrapOnuqnKWrVs2iEEXqJJNxUi_6oN3Kpsh_TZe61tvP82i4YrFqYbg&_nc_zt=23&_nc_ht=scontent.fasu6-2.fna&_nc_gid=FMfBrDTsosUEaj5d7pHVdQ&oh=00_AYGsBZy-dwOag7GeAmMxMKcyZMl6MKMw_2HfLXX15w__FA&oe=67F09DB4" 
+                                        alt="Pastora Mirtha Talavera"
+                                        className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
+                                    />
+                                    <h3 className="text-2xl font-bold mb-2">Pra. Presidente Mirtha Talavera</h3>
+                                    <p className="text-gray-600">Pastora Principal</p>
+                                </div>
+                                <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/356865900_2536898119792599_2986404223762720243_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG0aQaJogxurtS1WhThjmego4dslOwmaTGjh2yU7CZpMVdHlz7zjBAbyU6Oifcpy2eueMYQtm0KgW9zmadlulrM&_nc_ohc=9lv7bNcJBrEQ7kNvgHC76sS&_nc_oc=AdlBbPZHVwC3kZubborgaGM-NmTLh7HAn_ODkJv1sl4EG2DRxG7JYDeNJKUgI_0EB3I&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=jagzHbA1j3KFC8QrC0TVXQ&oh=00_AYHDVTRKQxzQ3aJZDBewngXOwENYIhieIGiIESPkMHZj-Q&oe=67F0ADFA" 
+                                        alt="Pastor Ever Presentado"
+                                        className="w-48 h-48 object-cover rounded-full mx-auto mb-4"
+                                    />
+                                    <h3 className="text-2xl font-bold mb-2">Pr. Ever Presentado</h3>
+                                    <p className="text-gray-600">Co-Pastor/Pastor Adjunto</p>
+                                </div>
+                            </div>
+                            
+                            {/* Líderes Ministeriales */}
+                            <h3 className="text-2xl font-bold text-center mb-6">Líderes Ministeriales</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+                                    <img 
+                                        src="https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486617262_1092862926214334_3031420025094590785_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHZJV35rizwcnPE2cr9nolW-_1Rk7dE6aj7_VGTt0TpqDxOGyeBw6NRBgsD8vYedFp2ZsLRzQg83r7hPZjvKgCe&_nc_ohc=VTi2f63owCsQ7kNvgFRxIrC&_nc_oc=Adk5iONxHMtOgU5vaE9--CRWOj6sODNKsw_iEBZS8orrdL3Cd3wmjMpPX6s3O3KttVk&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=cgH_8OBTgWyILTkHGr6xqQ&oh=00_AYHhV1NNUe9Utl3l5vdoxNfDF4pSRMrEf0-f_uCPt7LRdg&oe=67F099E1" 
+                                        alt="Cynthia Talavera"
+                                        className="w-32 h-32 object-cover rounded-full mx-auto mb-3"
+                                    />
+                                    <h4 className="font-bold mb-1">Cynthia Talavera</h4>
+                                    <p className="text-sm text-gray-600">Ministerio de Liberación</p>
+                                </div>
+                                
+                                <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+                                    <img 
+                                        src="placeholder-image.jpg" 
+                                        alt="Marcelo Gonzales"
+                                        className="w-32 h-32 object-cover rounded-full mx-auto mb-3"
+                                    />
+                                    <h4 className="font-bold mb-1">Marcelo Gonzales</h4>
+                                    <p className="text-sm text-gray-600">Ministerio de Jóvenes</p>
+                                </div>
+                                
+                                {/* Add 8 more leader cards with similar structure */}
+                                {/* Example of additional leaders: */}
+                                <div className="bg-white p-4 rounded-lg shadow-lg text-center">
+                                    <img 
+                                        src="placeholder-image.jpg" 
+                                        alt="Líder"
+                                        className="w-32 h-32 object-cover rounded-full mx-auto mb-3"
+                                    />
+                                    <h4 className="font-bold mb-1">Nombre del Líder</h4>
+                                    <p className="text-sm text-gray-600">Ministerio de Alabanza</p>
+                                </div>
+                                {/* Continue with more leader cards */}
+                            </div>
+                        </div>
+                    )}
+                    {showModal && selectedImage && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
+                            <div className="bg-white p-4 rounded-lg max-w-2xl w-full" onClick={e => e.stopPropagation()}>
+                                <img src={selectedImage.src} alt={selectedImage.title} className="w-full rounded"/>
+                                <div className="mt-4 flex justify-between items-center">
+                                    <h2 className="text-xl font-bold">{selectedImage.title}</h2>
+                                    <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-gray-700">
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+
+                    
+                    
+                    <footer className="bg-blue-800 text-white mt-12 py-8">
+                        <div className="max-w-7xl mx-auto px-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 className="text-xl font-bold mb-4">Contacto</h4>
+                                    <p className="mb-2">📍Avda. La victoria/Samuhu Barrio San Pablo, Asuncion</p>
+                                    <p className="mb-2">📞 +595 981 123456</p>
+                                    <p>✉️ iglesiacristianalaVictoria@gmail.com</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold mb-4">Horarios</h4>
+                                    <p className="mb-2">Domingo: 10:00 AM</p>
+                                    <p className="mb-2">Martes: 7:00 PM</p>
+                                    <p className="mb-2">Miércoles: 9:00 PM</p>
+                                    <p>Viernes: 7:30 PM</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold mb-4">Síguenos</h4>
+                                    <div className="flex space-x-4">
+                                        <a href="https://facebook.com/iglesiacristianalaVictoria" 
+                                           target="_blank" 
+                                           className="hover:text-blue-300 transition-colors">
+                                            <svg className="w-1 h-1 fill-current" viewBox="0 0 24 24">
+                                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="https://instagram.com/iglesiacristianalaVictoria" 
+                                           target="_blank" 
+                                           className="hover:text-pink-400 transition-colors">
+                                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="https://wa.me/595981123456" 
+                                           target="_blank" 
+                                           className="hover:text-green-400 transition-colors">
+                                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="text-center mt-8 pt-8 border-t border-blue-700">
+                                <p>© 1958 Iglesia Cristiana La Victoria. Todos los derechos reservados.</p>
+                            </div>
+                        </div>
+                    </footer>
