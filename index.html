@@ -15,21 +15,14 @@
     
     <script type="text/babel">
         function App() {
-            const [images, setImages] = React.useState(false);
+            // Remove this duplicate declaration
+            // const [images, setImages] = React.useState(false);
             const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             const [showModal, setShowModal] = React.useState(false);
             const [selectedImage, setSelectedImage] = React.useState(null);
             const [activeSection, setActiveSection] = React.useState('inicio');
 
-            const addImage = () => {
-                const newImage = {
-                    id: images.length + 1,
-                    src: 'https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486625066_1096377335862893_6208095750383997392_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEWVTgeE_uZpWPNr3jzLU7TKApsTAPO5VYoCmxMA87lVpBd-L4T0Y3fk8mvSjy7LfgQPMqtTnKIBmECKNH8ILvg&_nc_ohc=5S5q0D7Tqm8Q7kNvgHzXGYa&_nc_oc=Adm91zAuzO09e34mnp_GvPXQc3_lVO5b1Ct_gRMuSSh_6O2CUOTBf95jHRJec2j949U&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=nhf5-0Dsb3SJPNT84fTmBg&oh=00_AYFFQn0JD-IGRbUtJrcEDbsstuR9-2VNvCSd9hQYKhwg2A&oe=67F081F7',
-                    title: `Imagen ${images.length + 1}`,
-                    likes: 0
-                };
-                setImages([...images, newImage]);
-            };
+        
 
             const handleLike = (id) => {
                 setImages(images.map(img => 
