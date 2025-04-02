@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="./css/style.css">
     <title>IglesiaCristianaLaVictoria</title>
     <script src="https://cdn.tailwindcss.com" defer></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -37,7 +37,7 @@
             const addImage = () => {
                 const newImage = {
                     id: images.length + 1,
-                    src: 'https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486625066_1096377335862893_6208095750383997392_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEWVTgeE_uZpWPNr3jzLU7TKApsTAPO5VYoCmxMA87lVpBd-L4T0Y3fk8mvSjy7LfgQPMqtTnKIBmECKNH8ILvg&_nc_ohc=5S5q0D7Tqm8Q7kNvgHzXGYa&_nc_oc=Adm91zAuzO09e34mnp_GvPXQc3_lVO5b1Ct_gRMuSSh_6O2CUOTBf95jHRJec2j949U&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=nhf5-0Dsb3SJPNT84fTmBg&oh=00_AYFFQn0JD-IGRbUtJrcEDbsstuR9-2VNvCSd9hQYKhwg2A&oe=67F081F7',
+                    src: 'https://scontent.fasu6-1.fna.fbcdn.net/v/t39.30808-6/486625066_1096377335862893_6208095750383997392_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEWVTgeE_uZpWPNr3jzLU7TKApsTAPO5VYoCmxMA87lVpBd-L4T0Y3fk8mvSjy7LfgQPMqtTnKIBmECKNH8ILvg&_nc_ohc=5S5q0D7Tqm8Q7kNvgHzXGYa&_nc_oc=Adm91zAuzO09e34mnp_GvPXQc3_lVO5b1Ct_gRMuSSh_6O2CUOTBf95jHRJec2j949U&_nc_zt=23&_nc_ht=scontent.fasu6-1.fna&_nc_gid=nhf5-0Dsb3SJPNT84fTmBg&oh=00_AYFFQn0JD-IGRbUtJrcEDbsstuR9-2VNvCSd9hQYKhwg2A&oe=67F081F7',
                     title: `Imagen ${images.length + 1}`,
                     likes: 0
                 };
@@ -137,6 +137,39 @@
                                     <h3 className="text-xl font-bold mb-3">Horarios de Servicios</h3>
                                     <p>Domingos: 10:00 AM - Servicio Principal</p>
                                 </div>
+                                <h2 className="text-3xl font-bold mb-4">Bienvenidos a nuestra Iglesia</h2>
+                                <img 
+                                    src="https://scontent.fasu8-2.fna.fbcdn.net/v/t39.30808-6/486131131_1099994635501163_7590683894316209257_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF3xUSa7sfnhVKF7kgqaoG3UEGN0bxfViZQQY3RvF9WJo73YwODiyHXM6IwZc93-Aw3ZAMhC6a7tVtrQlfDQ02b&_nc_ohc=VWaNv9gGnpUQ7kNvgHQ8JC0&_nc_oc=AdnEWIj_SHzwuXPaRjx6pOuhfqRgAzJJyOOpqRsfP1pNpJ3Lbp1PBcuMf23GohadsdkP6hjFPtgj3SuJYRsqSjEf&_nc_zt=23&_nc_ht=scontent.fasu8-2.fna&_nc_gid=90gRQfsZ_eGbNTx3W-UcUg&oh=00_AYG5F9DDp4BEg3Jubt5fJTthDqsi886tUgIbnYafHi1Ung&oe=67F34A9C" 
+                                    alt="Iglesia Cristiana La Victoria" 
+                                    className="w-full max-w-4xl mx-auto rounded-lg shadow-lg mb-6"
+                                />
+                                <p className="text-lg mb-6 tex-2xl">Participa de nuestra enseñanza de Guerra Espíritual</p>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <h3 className="text-xl font-bold mb-3">Horarios</h3>
+                                    <p>Miercoles: 9:00 PM</p>
+                                </div>
+                                <h2 className="text-3xl font-bold mb-4">Bienvenidos a nuestra Iglesia</h2>
+                                <img 
+                                    src="https://scontent.fasu8-1.fna.fbcdn.net/v/t39.30808-6/486555240_1096377329196227_6402852132839402151_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF66oIUIh6wLY8iOCgoSal65gmdotLl4NLmCZ2i0uXg0peHXg0qLe4mHUUbG5ibwPNfrOd7ZK0LQWPgHNI7Tt_3&_nc_ohc=9Ma7ae5op7cQ7kNvgEvSS7F&_nc_oc=AdmeOW1nmzzzC9hxWjX6jR-yRV02qSQTb66undeA-N8TxFJkFB0pcWmXQnU5UXFc1I-RhzuhslACytCSWsEK53WH&_nc_zt=23&_nc_ht=scontent.fasu8-1.fna&_nc_gid=KtHrbNY7CMfQVXQhMj6DjQ&oh=00_AYFaj358a1gH1Z51rF_gMEdy17z1ApaXpGlQRnKP-zBLtQ&oe=67F33562" 
+                                    alt="Iglesia Cristiana La Victoria" 
+                                    className="w-full max-w-4xl mx-auto rounded-lg shadow-lg mb-6"
+                                />
+                                <p className="text-lg mb-6">Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos.</p>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <h3 className="text-xl font-bold mb-3">Mateo 18:20</h3>
+                                    <p>Ven y se parte del Cuerpo de Cristo</p>
+                                </div>
+                                <h2 className="text-3xl font-bold mb-4">Bienvenidos a nuestra Iglesia</h2>
+                                <img 
+                                    src="https://scontent.fasu8-2.fna.fbcdn.net/v/t39.30808-6/471228264_1023039763196651_8159902938971517438_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHlPGpbxm4E-8bVT-YhI7vSIh9ZQPqs0EgiH1lA-qzQSOsAC9n0yU_fY_TuJ9TT-3YVlxTdd_jG0gZiF6T1RcJV&_nc_ohc=iqVEXhxy_ooQ7kNvgGMvbgN&_nc_oc=AdmsSbV42UgcGWYC6pTwE7xpLnyADl11JtxDUA9FAvcvhljYDy2zI3OHHZqxRWtR2CcKrBxc3d-jNqK5yGRiaQLb&_nc_zt=23&_nc_ht=scontent.fasu8-2.fna&_nc_gid=f9i_UpehnDa0SxtlHKVV1g&oh=00_AYEIkyGBYuvHUguoYywR2Osww497rH_1cLvd11Q9HNJAPg&oe=67F33BE8" 
+                                    alt="Iglesia Cristiana La Victoria" 
+                                    className="w-full max-w-4xl mx-auto rounded-lg shadow-lg mb-6"
+                                />
+                                <p className="text-lg mb-6">Jesus te ama</p>
+                                <div className="bg-white p-6 rounded-lg shadow-lg">
+                                    <h3 className="text-xl font-bold mb-3">Juan 3:16</h3>
+                                    <p></p>
+                                </div>
                             </div>
                         )}
 
@@ -187,8 +220,7 @@
                                 </div>
                                 <div className="bg-white p-6 rounded-lg shadow-lg">
                                     <img 
-                                        src="https://www.facebook.com/reel/624594300363155/?s=single_unit&__cft__[0]=AZUIbz4Vy4HFAocCPiNfh7aIuvT641dOBCnZNV50eLojN6BWascY-SKilISzzYz76Az0w1r__uyecw_DmQG1lmvj8yWEXh8vnSx4JXpqaw4RYGLEs7qOU3ddy13YMEHjYWNNGifw2TeoTx0PqqkIfprqvGcf_F97NMbRZs8YUWMO73Dxl5gUg5bceg9C8qHBB_W8CoBHA_gLnC0Qf_u-sNGm&__tn__=H-R" 
-                                        alt="Culto Dominical" 
+                                        src="https://scontent.fasu8-2.fna.fbcdn.net/v/t39.30808-6/480728840_1083511667149460_8080077180967174972_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHAc6JWeTENKO7mXN34VICtYU3t7_kYpUVhTe3v-RilRbk5dHT401rT7fmfv27WenEc9e2N_1l6HMB096QWbhVR&_nc_ohc=qdhTxVx_8MAQ7kNvgEfO6j8&_nc_oc=AdldeHPTm06Md-OC5_JFuGm26ZPKbJ3ITOiD98ZAHeHIPA7uom2cN7iAVCs_dRsrOzUu3u13wFq5JhhyQ7wYrTnc&_nc_zt=23&_nc_ht=scontent.fasu8-2.fna&_nc_gid=XrDnqHyZEttia_DrylmHhg&oh=00_AYEoNhKRb5VrS-JnMJ0zvPCmnKMTUWIj6G5gJ5peF-1WfA&oe=67F34A70" 
                                         className="w-full h-48 object-cover rounded-lg mb-4"
                                     />
                                     <h3 className="text-xl font-bold mb-3">Grupos de Oración</h3>
@@ -235,14 +267,15 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="bg-white p-6 rounded-lg shadow-lg">
                                     <h3 className="text-xl font-bold mb-3">Próximos Eventos</h3>
-                                    <ul className="space-y-2">
-                                        <li>Retiro de Jóvenes - Próximo mes</li>
-                                        <li>Conferencia de Familia - Agosto 2024</li>
+                                    <ul className="space-y-2 mb-6">
+                                        <li></li>
+                                        <li>Asamblea Congregacional - Mayo 2025</li>
                                         <li>Campaña Evangelística/Arde La Victoria - Abril 2025</li>
                                     </ul>
                                 </div>
                             </div>
                         )}
+                        
                     </main>
 
                     {/* Replace gallery section with ministerial section */}
@@ -369,26 +402,15 @@
             </div>
             <div class="alinear">
                 <h4 className="text-xl font-bold mb-4">Síguenos</h4>
-                <div className=" ">
-                    <a href="https://www.facebook.com/iglesialavictoriapy" 
-                       target="_blank">
-                        <svg className="" viewBox="0 0 500 500">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
+                <div class="redes">
+                    <a href="https://www.facebook.com/iglesialavictoriapy" target="_blank">
+                        <img src="https://cdn-icons-png.freepik.com/256/3579/3579093.png?semt=ais_hybrid" alt="">
                     </a>
-                    <a href="https://instagram.com/iglesiacristianalaVictoria" 
-                       target="_blank" 
-                       className="">
-                        <svg className="" viewBox="0 0 500 500">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
+                    <a href="https://www.instagram.com/iglesiacristianalavictoria61/?hl=es" target="_blank">
+                        <img src="https://cdn-icons-png.freepik.com/256/2111/2111463.png?semt=ais_hybrid" alt="">
                     </a>
-                    <a href="https://wa.me/595981123456" 
-                       target="_blank" 
-                       className="hover:text-green-400 transition-colors">
-                        <svg className="" viewBox="0 0 500 500">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                        </svg>
+                    <a href="https://wa.me/595985723153" target="_blank">
+                        <img src="https://cdn-icons-png.freepik.com/256/733/733585.png?semt=ais_hybrid" alt="">
                     </a>
                 </div>
             </div>

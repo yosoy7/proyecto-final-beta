@@ -1,6 +1,10 @@
-.alinear{
+.redes{
     padding: 10px;
     gap: 10px;
     display: flex;
-    justify-content: cente;
+    justify-content: first baseline;
+    
+    img{
+        height: 3em;
+    }
 }
