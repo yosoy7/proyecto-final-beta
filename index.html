@@ -14,7 +14,8 @@
     <div id="root"></div>
     
     <script type="text/babel">
-        
+        function App() {
+            const [images, setImages] = React.useState(false);
             const [isMenuOpen, setIsMenuOpen] = React.useState(false);
             const [showModal, setShowModal] = React.useState(false);
             const [selectedImage, setSelectedImage] = React.useState(null);
