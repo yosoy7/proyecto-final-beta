@@ -1,10 +1,28 @@
 .redes{
-    padding: 10px;
-    gap: 10px;
-    display: flex;
-    justify-content: first baseline;
-    
     img{
-        height: 3em;
+        width: 24px;
+        height: auto;
+        display: flex;
+        
     }
 }
+
+.alinear{
+    background-color:#1e40af;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.alinear div{
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    color: white;
+    
+}
+
+.redes h4, .redes p {
+    margin: 0; /* Opcional: para que no tengan márgenes indeseados */
+  }
