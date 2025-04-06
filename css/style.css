@@ -36,9 +36,8 @@
 
 .centrado-p{
     justify-content: column;
-    img{
-        width: 300px;
-        height: auto;
-        
-    }
+}
+
+#solo-img{
+    width: 720px;
 }
