@@ -23,6 +23,22 @@
     
 }
 
-.redes h4, .redes p {
-    margin: 0; /* Opcional: para que no tengan márgenes indeseados */
+
+  .t-alineado{
+    justify-content: center;
+    background-color:rgb(222, 225, 231);
+    padding: auto;
+    color: white;
+    border-radius: 10px;
+    width: 300px;
+    color: black;
   }
+
+.centrado-p{
+    justify-content: column;
+    img{
+        width: 300px;
+        height: auto;
+        
+    }
+}
