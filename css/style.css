@@ -42,3 +42,8 @@
 #solo-img{
     width: 720px;
 }
+
+.iconos {
+    display: flex;
+    flex-direction: row !important;
+}
